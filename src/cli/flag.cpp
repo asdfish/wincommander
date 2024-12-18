@@ -35,7 +35,7 @@ void Flag::parse(std::optional<std::string>&& argument) {
   }
 
   if(move_argument && argument.has_value())
-    this->argument = std::move(std::optional<std::string>(argument.value()));
+    this->argument = std::optional<std::string>(std::move(argument.value()));
   else
     this->argument = std::nullopt;
 
