@@ -20,10 +20,6 @@ bool ArgumentValidator::validate(const char* argument) {
 
 std::function<bool(const char*)> ArgumentValidator::get_validator(void) const {
   switch(validator) {
-    case VALIDATOR_ANY:
-      return [] (const char*) {
-        return true;
-      };
     case VALIDATOR_NAME:
       return [&] (const char* argument) {
         return name == argument;
@@ -38,6 +34,11 @@ std::function<bool(const char*)> ArgumentValidator::get_validator(void) const {
     case VALIDATOR_REGEX:
       return [&] (const char* argument) {
         return std::regex_match(argument, regex);
+      };
+    case VALIDATOR_ANY:
+    default:
+      return [] (const char*) {
+        return true;
       };
   }
 }

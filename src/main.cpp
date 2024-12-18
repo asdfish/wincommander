@@ -1,13 +1,15 @@
-#define ARGUMENT_VALIDATOR_DEF
-#include <argument_validator.hpp>
+#define FLAGS_DEF
+#include <cli/flags.hpp>
 
 #include <iostream>
 
-int main(int argc, const char* argv[]) {
-  if(argc == 1)
-    return -1;
+int main(int argc, char* argv[]) {
+  Flags flags = Flags(
+    std::unordered_map<char, Flag> {
+      { 'v', Flag(ARGUMENT_NONE, "make commands more verbose", "verbose") },
+    }
+  );
+  flags.parse(argc, argv);
 
-  ArgumentValidator argument = ArgumentValidator("asdf");
-  std::cout << argument.validate(argv[1]);
   return 0;
 }

@@ -34,7 +34,7 @@ public:
     FlagArgumentType input_argument_type,
     std::string&& input_documentation,
     std::string&& input_id,
-    std::optional<ArgumentValidator>&& input_argument_validator
+    std::optional<ArgumentValidator>&& input_argument_validator = std::nullopt
   );
   void parse(std::optional<std::string>&& argument = std::nullopt);
   constexpr std::optional<char> get_option_string_end(void) const {
@@ -43,6 +43,7 @@ public:
       case ARGUMENT_REQUIRED:
         return std::optional<char>(':');
       case ARGUMENT_NONE:
+      default:
         return std::nullopt;
     }
   }

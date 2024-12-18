@@ -18,20 +18,23 @@ Flag::Flag(
 
 void Flag::parse(std::optional<std::string>&& argument) {
   bool move_argument = true;
+  #define FAIL(ERROR) \
+    if(argument_type == ARGUMENT_REQUIRED) \
+      throw ERROR; \
+    else if(argument_type == ARGUMENT_OPTIONAL) \
+      move_argument = false;
 
-  if(argument.has_value()) {
-    if(!argument_validator.value().validate(argument.value().c_str())) {
-      if(argument_type == ARGUMENT_REQUIRED)
-        throw std::format("Invalid argument {} for flag {}", argument.value(), id);
-      else if(argument_type == ARGUMENT_OPTIONAL)
-        move_argument = false;
-    }
-  } else if(argument_type == ARGUMENT_REQUIRED)
-    throw std::format("Missing argument for flag {}", id);
-  else if(argument_type == ARGUMENT_OPTIONAL)
-    move_argument = false;
+  if(argument_type != ARGUMENT_NONE) {
+    if(argument.has_value()) {
+      if(argument_validator.has_value()) {
+        if(!argument_validator.value().validate(argument.value().c_str())) {
+          FAIL(std::format("Invalid argument {} for flag {}", argument.value(), id))
+        }
+      } else FAIL(std::format("Missing argument parser for flag {}", id))
+    } else FAIL(std::format("Missing argument for flag {}", id))
+  }
 
-  if(move_argument)
+  if(move_argument && argument.has_value())
     this->argument = std::move(std::optional<std::string>(argument.value()));
   else
     this->argument = std::nullopt;
