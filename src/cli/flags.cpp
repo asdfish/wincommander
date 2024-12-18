@@ -1,6 +1,7 @@
 #define FLAGS_DEF
 #include <cli/flags.hpp>
 
+#include <iostream>
 #include <utility>
 
 Flags::Flags(std::unordered_map<char, Flag>&& input_flags):
@@ -18,6 +19,24 @@ void Flags::parse(int argc, char* argv[]) {
       else
         flags.at(option_character).parse();
     }
+}
+void Flags::print_documentation(size_t padding) const {
+  size_t max_id_length = 0;
+  for(const auto& flag : flags)
+    if(max_id_length < flag.second.id.length())
+      max_id_length = flag.second.id.length();
+
+  std::string padding_text;
+  padding_text.reserve(padding);
+  for(size_t i = 0; i < padding; i ++)
+    padding_text += ' ';
+
+  for(const auto& flag : flags) {
+    std::cout << padding_text << " -" << flag.first << " --" << flag.second.id << ' ';
+    for(size_t i = flag.second.id.length(); i < max_id_length; i ++)
+      std::cout << ' ';
+    std::cout << flag.second.documentation << '\n';
+  }
 }
 
 std::string Flags::get_option_string(void) const {
