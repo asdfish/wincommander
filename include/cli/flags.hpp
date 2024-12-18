@@ -1,13 +1,10 @@
 #ifndef FLAGS_HPP
 #define FLAGS_HPP
 
-class Flags;
+#include <getopt.h>
 
-#ifdef FLAGS_DEF
-
-#define FLAG_DEF
-#include <cli/flag.hpp>
-
+#include <vector>
+#include <string>
 #include <unordered_map>
 
 class Flags {
@@ -22,7 +19,5 @@ private:
   std::string get_option_string(void) const;
   std::vector<option> get_options(void) const;
 };
-
-#endif // FLAGS_DEF
 
 #endif // FLAGS_HPP

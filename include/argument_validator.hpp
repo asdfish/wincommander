@@ -1,20 +1,17 @@
 #ifndef ARGUMENT_VALIDATOR_HPP
 #define ARGUMENT_VALIDATOR_HPP
 
-class ArgumentValidator;
+#include <functional>
+#include <regex>
+#include <string>
+#include <vector>
+
 enum ArgumentValidatorType {
   VALIDATOR_ANY,
   VALIDATOR_NAME,
   VALIDATOR_OPTIONS,
   VALIDATOR_REGEX,
 };
-
-#ifdef ARGUMENT_VALIDATOR_DEF
-
-#include <functional>
-#include <regex>
-#include <string>
-#include <vector>
 
 class ArgumentValidator {
 public:
@@ -33,7 +30,5 @@ private:
 
   std::function<bool(const char*)> get_validator(void) const;
 };
-
-#endif // ARGUMENT_VALIDATOR_DEF
 
 #endif // ARGUMENT_VALIDATOR_HPP

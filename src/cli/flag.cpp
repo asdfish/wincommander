@@ -1,4 +1,3 @@
-#define FLAG_DEF
 #include <cli/flag.hpp>
 
 #include <format>

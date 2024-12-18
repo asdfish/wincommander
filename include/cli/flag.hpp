@@ -1,16 +1,6 @@
 #ifndef FLAG_HPP
 #define FLAG_HPP
 
-class Flag;
-enum FlagArgumentType {
-  ARGUMENT_NONE     = 0,
-  ARGUMENT_REQUIRED = 1,
-  ARGUMENT_OPTIONAL = 2,
-};
-
-#ifdef FLAG_DEF
-
-#define ARGUMENT_VALIDATOR_DEF
 #include <argument_validator.hpp>
 
 #include <getopt.h>
@@ -18,6 +8,12 @@ enum FlagArgumentType {
 #include <format>
 #include <string>
 #include <optional>
+
+enum FlagArgumentType {
+  ARGUMENT_NONE     = 0,
+  ARGUMENT_REQUIRED = 1,
+  ARGUMENT_OPTIONAL = 2,
+};
 
 class Flag {
 public:
@@ -51,7 +47,5 @@ public:
     return option { id.c_str(), argument_type, nullptr, 0 };
   }
 };
-
-#endif // FLAG_DEF
 
 #endif

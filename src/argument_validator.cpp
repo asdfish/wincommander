@@ -1,4 +1,3 @@
-#define ARGUMENT_VALIDATOR_DEF
 #include <argument_validator.hpp>
 
 #include <utility>
