@@ -9,7 +9,7 @@ enum ArgumentValidatorType {
   VALIDATOR_REGEX,
 };
 
-#if defined(ARGUMENT_VALIDATOR_DEF) || defined(ALL_DEF)
+#ifdef ARGUMENT_VALIDATOR_DEF
 
 #include <functional>
 #include <regex>
@@ -34,6 +34,6 @@ private:
   std::function<bool(const char*)> get_validator(void) const;
 };
 
-#endif // defined(ARGUMENT_VALIDATOR_DEF) || defined(ALL_VALIDATOR_DEF)
+#endif // ARGUMENT_VALIDATOR_DEF
 
 #endif // ARGUMENT_VALIDATOR_HPP

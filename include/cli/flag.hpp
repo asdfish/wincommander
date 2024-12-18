@@ -8,7 +8,7 @@ enum FlagArgumentType {
   ARGUMENT_OPTIONAL = 2,
 };
 
-#if defined(FLAG_DEF) || defined(ALL_DEF)
+#ifdef FLAG_DEF
 
 #define ARGUMENT_VALIDATOR_DEF
 #include <argument_validator.hpp>
@@ -52,6 +52,6 @@ public:
   }
 };
 
-#endif // defined(FLAG_DEF) || defined(ALL_DEF)
+#endif // FLAG_DEF
 
 #endif
