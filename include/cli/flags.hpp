@@ -7,6 +7,8 @@
 #include <string>
 #include <unordered_map>
 
+class Flag;
+
 class Flags {
 public:
   std::unordered_map<char, Flag> flags;

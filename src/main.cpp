@@ -1,3 +1,4 @@
+#include <cli/flag.hpp>
 #include <cli/flags.hpp>
 
 #include <iostream>
