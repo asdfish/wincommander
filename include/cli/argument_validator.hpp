@@ -1,10 +1,10 @@
 #ifndef ARGUMENT_VALIDATOR_HPP
 #define ARGUMENT_VALIDATOR_HPP
 
-#include <functional>
-#include <regex>
-#include <string>
-#include <vector>
+#include <std/functional.hpp>
+#include <std/regex.hpp>
+#include <std/string.hpp>
+#include <std/vector.hpp>
 
 enum ArgumentValidatorType {
   VALIDATOR_ANY,

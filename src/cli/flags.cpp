@@ -1,8 +1,8 @@
 #include <cli/flag.hpp>
 #include <cli/flags.hpp>
 
-#include <iostream>
-#include <utility>
+#include <std/iostream.hpp>
+#include <std/utility.hpp>
 
 Flags::Flags(std::unordered_map<char, Flag>&& input_flags):
   flags(std::move(input_flags)) {}

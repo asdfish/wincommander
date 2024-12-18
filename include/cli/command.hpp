@@ -1,15 +1,19 @@
 #ifndef COMMAND_HPP
 #define COMMAND_HPP
 
-#include <string>
-#include <utility>
+#include <cli/argument_validator.hpp>
+
+#include <std/string.hpp>
 
 class Command {
 public:
   std::string name;
+  ArgumentValidator argument_validator;
 
-  constexpr Command(std::string&& name):
-    name(std::move(name)) {}
+  Command(
+    std::string&& input_name,
+    ArgumentValidator&& input_argument_validator
+  );
 };
 
 #endif // COMMAND_HPP

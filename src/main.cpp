@@ -1,7 +1,7 @@
 #include <cli/flag.hpp>
 #include <cli/flags.hpp>
 
-#include <iostream>
+#include <std/iostream.hpp>
 
 int main(int argc, char* argv[]) {
   Flags flags = Flags(

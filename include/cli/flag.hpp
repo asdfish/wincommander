@@ -1,13 +1,13 @@
 #ifndef FLAG_HPP
 #define FLAG_HPP
 
-#include <argument_validator.hpp>
+#include <cli/argument_validator.hpp>
 
 #include <getopt.h>
 
-#include <format>
-#include <string>
-#include <optional>
+#include <std/format.hpp>
+#include <std/string.hpp>
+#include <std/optional.hpp>
 
 enum FlagArgumentType {
   ARGUMENT_NONE     = 0,
