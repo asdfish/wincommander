@@ -15,6 +15,7 @@ enum FlagArgumentType {
 
 #include <getopt.h>
 
+#include <format>
 #include <string>
 #include <optional>
 
@@ -36,7 +37,16 @@ public:
     std::optional<ArgumentValidator>&& input_argument_validator
   );
   void parse(std::optional<std::string>&& argument = std::nullopt);
-  constexpr option to_option(void) const {
+  constexpr std::optional<char> get_option_string_end(void) const {
+    switch(argument_type) {
+      case ARGUMENT_OPTIONAL:
+      case ARGUMENT_REQUIRED:
+        return std::optional<char>(':');
+      case ARGUMENT_NONE:
+        return std::nullopt;
+    }
+  }
+  constexpr option get_option(void) const {
     return option { id.c_str(), argument_type, nullptr, 0 };
   }
 };
