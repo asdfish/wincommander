@@ -9,7 +9,6 @@
 
 class ArgumentParserBase {
 public:
-
   bool set;
   std::optional<std::string> argument;
 

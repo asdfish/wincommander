@@ -16,6 +16,7 @@ public:
     ArgumentType argument_type,
     std::optional<ArgumentValidator>&& argument_validator = std::nullopt
   );
+
   void parse(std::optional<std::string>&& argument = std::nullopt);
   constexpr std::optional<char> get_option_string_end(void) const {
     switch(argument_type) {
@@ -32,4 +33,4 @@ public:
   }
 };
 
-#endif
+#endif // FLAG_PARSER_HPP
