@@ -8,11 +8,11 @@ override CXXFLAGS += -Ibuild/include -Iinclude
 PROCESS_HEADER_FILES := yes
 PROCESSED_HEADER_FILES := $(if ${PROCESS_HEADER_FILES},$\
 														$(patsubst include/%.hpp,$\
-															build/include/%.hpp.gch,$\
+															build/%.hpp.gch,$\
 															$(shell find include -name '*.hpp' -type f)))
 
 OBJECT_FILES := $(patsubst src/%.cpp,$\
-									build/src/%.o,$\
+									build/%.o,$\
 									$(shell find src -name '*.cpp' -type f))
 
 WINCOMMANDER_REQUIREMENTS := ${PROCESSED_HEADER_FILES} ${OBJECT_FILES}
@@ -37,9 +37,9 @@ all: wincommander
 wincommander: ${WINCOMMANDER_REQUIREMENTS}
 	${CXX} ${OBJECT_FILES} ${CXXFLAGS} ${LDFLAGS} -o $@
 
-build/src/%.o: src/%.cpp
+build/%.o: src/%.cpp
 	$(call COMPILE,$<,$@)
-build/include/%.hpp.gch: include/%.hpp
+build/%.hpp.gch: include/%.hpp
 	$(call COMPILE,$<,$@)
 
 clean:
