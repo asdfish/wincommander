@@ -7,13 +7,13 @@
 #include <std/string.hpp>
 #include <std/unordered_map.hpp>
 
-class Flag;
+class FlagParser;
 
 class Flags {
 public:
-  std::unordered_map<char, Flag> flags;
+  std::unordered_map<char, FlagParser> flags;
 
-  Flags(std::unordered_map<char, Flag>&& flags);
+  Flags(std::unordered_map<char, FlagParser>&& flags);
   void parse(int argc, char* argv[]);
   void print_documentation(size_t padding) const;
 

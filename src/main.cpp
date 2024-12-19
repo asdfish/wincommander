@@ -1,13 +1,12 @@
-#include <cli/flag.hpp>
+#include <cli/argument/parser/flag.hpp>
 #include <cli/flags.hpp>
 
 #include <std/iostream.hpp>
 
 int main(int argc, char* argv[]) {
   Flags flags = Flags(
-    std::unordered_map<char, Flag> {
-      { 'v', Flag(ARGUMENT_NONE, "Make commands more verbose", "verbose") },
-      { 'h', Flag(ARGUMENT_OPTIONAL, "Make commands more verbose", "ver") },
+    std::unordered_map<char, FlagParser> {
+      { 'v', FlagParser("Make commands more verbose", "verbose", ARGUMENT_NONE) },
     }
   );
   /*flags.parse(argc, argv);*/

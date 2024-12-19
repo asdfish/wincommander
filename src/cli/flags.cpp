@@ -1,10 +1,10 @@
-#include <cli/flag.hpp>
+#include <cli/argument/parser/flag.hpp>
 #include <cli/flags.hpp>
 
 #include <std/iostream.hpp>
 #include <std/utility.hpp>
 
-Flags::Flags(std::unordered_map<char, Flag>&& input_flags):
+Flags::Flags(std::unordered_map<char, FlagParser>&& input_flags):
   flags(std::move(input_flags)) {}
 void Flags::parse(int argc, char* argv[]) {
   std::string option_string = get_option_string();
